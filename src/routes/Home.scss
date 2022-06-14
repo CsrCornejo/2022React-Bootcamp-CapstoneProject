@@ -1,0 +1,100 @@
+.Home {
+    overflow-x: auto;
+    height: calc(100% - 120px);
+    background-color: black;
+
+    > * {
+        margin: 2em 0;
+    }
+
+    .Banner {
+      display: flex;   
+      justify-content: center;
+      background-color: #3D0000;
+      .slider {
+        display: flex;
+        overflow-x: auto;
+        .banner-info {
+          margin: 1em;
+          position: relative;
+          display: flex;
+          .banner-details {
+            position: absolute;
+            display: flex;
+            height: 95%;
+            width: 100%;
+            color: white;
+            text-shadow: 0 0 2px black;
+            justify-content: center;
+            align-items: flex-end;
+          }
+          img {
+            height: 200px;
+            border-radius: 1em;
+          }
+        }
+      }
+    }
+
+    .Categories {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+
+        &-title {
+            color: blue;
+        }
+
+        &-container {
+            color: #3D0000;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(4, 2fr);
+            img {
+                height: 150px;
+            }
+        }
+    }
+    
+    .Products {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+
+        &-title {
+            color: blue;
+        }
+
+        &-container {
+            color: #3D0000;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(4, 2fr);
+            gap: 5px;
+            img {
+                width: 100%;
+            }
+        }
+        
+        & .products {
+          &-info {
+            position: relative;
+          }
+
+          &-details {
+            position: absolute;
+            top: 2.5%;
+            left: 0;
+            width: 100%;
+            height: 95%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: #3D0000;
+            text-shadow: 0 0 5px white;
+          }
+        }
+    }
+}

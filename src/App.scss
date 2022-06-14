@@ -1,0 +1,44 @@
+.App {
+  text-align: center;
+  background-color: #000000;
+  height: 100vh;
+  width: 100vw;
+
+  &-logo {
+    width: 200px;
+  }
+
+  nav {
+    border-bottom: 0.1em solid #950101;
+    display: flex;
+    align-items: center;
+    height: 60px;
+
+    .links {
+      flex: 1;
+      display: flex;
+      justify-content: right;
+      
+      a {
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+      }
+
+      * {
+        margin: 0 0.5em;
+      }
+    }
+  }
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    color: white;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
