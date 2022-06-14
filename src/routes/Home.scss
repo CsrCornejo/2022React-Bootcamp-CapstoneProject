@@ -56,45 +56,4 @@
             }
         }
     }
-    
-    .Products {
-        display: flex;
-        width: 100%;
-        flex-direction: column;
-        align-items: flex-start;
-
-        &-title {
-            color: blue;
-        }
-
-        &-container {
-            color: #3D0000;
-            width: 100%;
-            display: grid;
-            grid-template-columns: repeat(4, 2fr);
-            gap: 5px;
-            img {
-                width: 100%;
-            }
-        }
-        
-        & .products {
-          &-info {
-            position: relative;
-          }
-
-          &-details {
-            position: absolute;
-            top: 2.5%;
-            left: 0;
-            width: 100%;
-            height: 95%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            color: #3D0000;
-            text-shadow: 0 0 5px white;
-          }
-        }
-    }
 }

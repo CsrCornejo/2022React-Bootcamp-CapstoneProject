@@ -7,6 +7,7 @@ import Cart from './routes/Cart';
 import Checkout from './routes/Checkout';
 import Home from './routes/Home';
 import Footer from './routes/Footer';
+import Products from './routes/Products';
 
 function App() {
   const { data, isLoading } = useFeaturedBanners();
@@ -15,7 +16,9 @@ function App() {
   return (
     <div className="App">
       <nav>
-        <img src={'/logo.png'} className="App-logo" alt="tiendita-logo" />
+        <Link to="/">
+          <img src={'/logo.png'} className="App-logo" alt="tiendita-logo" />
+        </Link>
         <div className="links">
           <input type="text" placeholder='Search' />
           <Link to="/cart"> <FaShoppingCart /> </Link>
@@ -23,6 +26,7 @@ function App() {
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="product" element={<Products />} />
         <Route path="cart" element={<Cart />} />
         <Route path="checkout" element={<Checkout />} />
       </Routes>

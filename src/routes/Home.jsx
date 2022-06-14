@@ -37,7 +37,7 @@ export default function Home() {
       <main className="Home">
         <Banner banners={banners}/>
         <Categories categories={categories}/>
-        <Products products={products}/>
+        <Products products={products} showAllProducts={true} />
       </main>
     );
   }
