@@ -1,30 +1,47 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "./Products.scss";
 
-export default function Products({ products, showAllProducts = false }) {
-  const prev = () => {
-    console.log("Previous Page");
-  }
-  const next = () => {
-    console.log("Next Page");
-  }
+export default function Products(
+  { products, showAllProducts = false, next, prev, handleNext, handlePrev }
+) {
+  let navigate = useNavigate();
+  const hasProducts = products && products.length > 0;
 
   return (
     <div className="Products">
       <h2 className="Products-title">Products</h2>
+      {!hasProducts && (
+        <h2 className="products-message">No products found</h2>
+      )}
       <div className="Products-container">
-      {products && products.map(
+      {hasProducts && products.map(
         ({ id, data: { name, price, category: { slug }, mainimage: { url, alt } }}) => (
-        <div className="products-info" key={id}>
-          <img src={url} alt={alt} />
-          <div className="products-details">
-            <div className="products-details__name">{name}</div>
-            <div className="products-details__price">
-              <div>{slug}</div>
-              <div>${price}</div>
+          <div
+            className="products-controller"
+            key={id}
+            onClick={() => {
+              console.log("Id", id);
+              navigate(`/product/${id}`)
+            }
+          }
+          >
+            <div className="products-info">
+              <img src={url} alt={alt} />
+              <div className="products-details">
+                <div className="products-details__name">{name}</div>
+                <div className="products-details__price">
+                  <div className="products-details__price-category">{slug}</div>
+                  <div>${price}</div>
+                </div>
+              </div>
             </div>
+            <button
+              className="products-add-cart"
+              onClick={(e) => { e.stopPropagation(); console.log("AddCart ", id); }}
+            >
+              Add to Cart
+            </button>
           </div>
-        </div>
       ))}
       </div>
       {
@@ -35,9 +52,9 @@ export default function Products({ products, showAllProducts = false }) {
         </div>
       }
       {
-        !showAllProducts && <div className="products-paginate">
-          <button onClick={prev}>Prev</button>
-          <button onClick={next}>Next</button>
+        !showAllProducts && hasProducts && <div className="products-paginate">
+          <button disabled={!prev} onClick={handlePrev}>Prev</button>
+          <button disabled={!next} onClick={handleNext}>Next</button>
         </div>
       }
     </div>

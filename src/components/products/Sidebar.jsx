@@ -1,6 +1,6 @@
 import "./Sidebar.scss"
 
-export default function Sidebar({ selected, handleSelect, categories }) {
+export default function Sidebar({ selected, handleSelect, categories, handleClear }) {
 
   const isSelected = (category) => selected.includes(category) ? "selected" : "not-selected"
 
@@ -16,10 +16,21 @@ export default function Sidebar({ selected, handleSelect, categories }) {
                   type="checkbox"
                   value={id}
                   id={id}
+                  checked={isSelected(id) === "selected"}
                 />
                 <label htmlFor={id}>{name}</label>
               </li>
             })
+          }
+          {
+            selected && selected.length > 0 && (
+              <button
+                className="Sidebar-content_action"
+                onClick={handleClear}
+              >
+                Clear
+              </button>
+            )
           }
       </nav>
     </div>

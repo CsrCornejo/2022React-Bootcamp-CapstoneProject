@@ -3,35 +3,33 @@ import Categories from "../components/home/Categories";
 import Products from "../components/home/Products";
 import { useEffect, useState } from "react";
 import "./Home.scss";
+import { useFeaturedBanners } from "../utils/hooks/useFeaturedBanners";
+import { useProductCategories } from "../utils/hooks/useProductCategories";
+import { useFeaturedProducts } from "../utils/hooks/useFeaturedProducts";
 
 export default function Home() {
     const [banners, setBanners] = useState([]);
     const [categories, setCategories] = useState([]);
     const [products, setProducts] = useState([]);
 
-    useEffect(() => {
-      (async () => {
-          const response = await fetch('mocks/featured-banners.json');
-          const { results } = await response.json();
-          setBanners(results);
-      })();
-    }, []);
-    
-    useEffect(() => {
-      (async () => {
-          const response = await fetch('mocks/product-categories.json');
-          const { results } = await response.json();
-          setCategories(results);
-      })();
-    }, []);
+    const bannersCall = useFeaturedBanners();
+    const categoriesCall = useProductCategories();
+    const productsCall = useFeaturedProducts();
 
     useEffect(() => {
-      (async () => {
-          const response = await fetch('mocks/featured-products.json');
-          const { results } = await response.json();
-          setProducts(results);
-      })();
-    }, []);
+      const { data: { results } } = bannersCall;
+      setBanners(results);
+    }, [bannersCall]);
+
+    useEffect(() => {
+      const { data: { results } } = categoriesCall;
+      setCategories(results);
+    }, [categoriesCall]);
+    
+    useEffect(() => {
+      const { data: { results } } = productsCall;
+      setProducts(results);
+    }, [productsCall]);
 
     return (
       <main className="Home">

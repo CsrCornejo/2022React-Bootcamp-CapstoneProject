@@ -1,0 +1,36 @@
+.Details {
+  height: calc(100% - 120px);
+  max-width: 100%;
+  text-align: left;
+  color: white;
+  display: flex;
+  flex-direction: column;
+
+  .swiper-container {
+    height: 30%;
+    width: 90%;
+    align-self: center;
+
+    .mySwiper {
+      height: 80%;
+      width: 100%;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .product-layout {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+
+  .product-specs {
+    grid-column: 1 / 3;
+  }
+}
