@@ -15,7 +15,7 @@ export default function Checkout() {
 
     return (
       <main className="Checkout">
-        <h2>Checkout</h2>
+        <h2 className='Checkout-title'>Checkout</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="container-name">
             <input 

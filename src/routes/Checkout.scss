@@ -7,6 +7,10 @@
     flex-direction: column;
     align-items: center;
 
+    &-title {
+        color: #0EB8BE;
+    }
+
     form {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -23,6 +27,9 @@
             table {
                 width: 100%;
 
+                thead {
+                    color: #0EB8BE;
+                }
                 .total {
                     text-align: right;
                 }

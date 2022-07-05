@@ -22,7 +22,7 @@ export default function Cart() {
 
     return (
       <main className="Cart">
-        <h2>Cart</h2>
+        <h2 className='Cart-title'>Cart</h2>
         <table className='Cart-table'>
           <thead>
             <tr>
