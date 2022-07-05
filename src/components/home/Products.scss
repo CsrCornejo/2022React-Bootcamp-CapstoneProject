@@ -20,8 +20,29 @@
     }
     
     & .products {
+      &-message {
+        color: white;
+        margin: 0;
+        align-self: center;
+      }
+
+      &-controller {
+        display: flex;
+        flex-direction: column;
+      }
+
       &-info {
         position: relative;
+      }
+
+      &-add-cart {
+        align-self: flex-end;
+        background-color: #3D0000;
+        color: white;
+        border: none;
+        height: 30px;
+        margin: 5px 0;
+        border-radius: 5px;
       }
 
       &-details {
@@ -35,6 +56,11 @@
         justify-content: space-between;
         color: #3D0000;
         text-shadow: 0 0 5px white;
+
+        &__price-category {
+          text-transform: uppercase;
+          font-size: small;
+        }
       }
 
       &-link {
