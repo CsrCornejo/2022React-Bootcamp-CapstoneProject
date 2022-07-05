@@ -1,6 +1,5 @@
 import './App.scss';
 import { Link } from 'react-router-dom';
-import { FaShoppingCart } from "react-icons/fa";
 import { Route, Routes } from 'react-router-dom';
 import Cart from './routes/Cart';
 import Checkout from './routes/Checkout';
@@ -9,8 +8,14 @@ import Footer from './routes/Footer';
 import Products from './routes/Products';
 import Details from './components/products/Details';
 import SearchInput from './components/layout/SearchInput';
+import CartIcon from './components/layout/CartIcon';
+import { useSelector } from 'react-redux';
 
 function App() {
+  const amounts = useSelector(
+    (state) => state.cart.cart.reduce((acc, { amount }) => acc + amount , 0)
+  );
+
   return (
     <div className="App">
       <nav>
@@ -19,7 +24,7 @@ function App() {
         </Link>
         <div className="links">
           <SearchInput />
-          <Link to="/cart"> <FaShoppingCart /> </Link>
+          <CartIcon count={amounts} />
         </div>
       </nav>
       <Routes>

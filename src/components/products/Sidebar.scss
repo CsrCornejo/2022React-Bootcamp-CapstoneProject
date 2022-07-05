@@ -4,10 +4,17 @@
 
   &-title {
     font-weight: bold;
-    color: blue;
+    color: #0EB8BE;
   }
 
   &-content {
+    li {
+      input,
+      label {
+        cursor: pointer;
+      }
+    }
+
     li.selected {
       color: #950101;
     }
@@ -20,6 +27,7 @@
       border-radius: 5px;
       width: 100%;
       margin: 3px 0;
+      cursor: pointer;
     }
   }
 }

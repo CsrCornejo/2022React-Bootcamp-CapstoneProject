@@ -1,0 +1,29 @@
+.Cart {
+    overflow-x: auto;
+    height: calc(100% - 120px);
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+
+    &-title {
+        color: #0EB8BE;
+    }
+
+    &-table {
+        thead {
+            color: #0EB8BE;
+        }
+
+        .product-row {
+            img {
+                width: 70px;
+                height: 70px;
+            }
+        }
+        
+        .total-col {
+            text-align: right;
+        }
+    }
+}

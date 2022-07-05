@@ -8,6 +8,9 @@ import { Swiper, SwiperSlide } from 'swiper/react/swiper-react';
 import 'swiper/swiper.min.css';
 import 'swiper/swiper-bundle.min.css';
 
+import { useDispatch } from "react-redux";
+import { add } from "../../redux/slices/cartSlice";
+
 const ProductDetails = (
     { product: {data: { name, price, sku, category: { slug }, short_description }, tags }}
   ) => {
@@ -32,6 +35,10 @@ export default function Details() {
   let { id } = useParams();
   const productCall = useProductsId(id)
 
+  const [numberProduct, setNumberProduct] = useState(0);
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const { data: { results }, isLoading } = productCall;
     if (!isLoading && results) {
@@ -39,8 +46,19 @@ export default function Details() {
     }
   }, [productCall]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (numberProduct) {
+      dispatch(add({ product: product, amount: parseInt(numberProduct) }));
+      
+      const copyProduct = {...product, data: { ...product.data }};
+      copyProduct.data.stock = copyProduct.data.stock - numberProduct;
+      setProduct(copyProduct);
+    }
+  }
+
   return (
-    <div className="Details">
+    <main className="Details">
       <div className="swiper-container">
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -65,10 +83,19 @@ export default function Details() {
         {
           product && Object.keys(product).length !== 0 && <ProductDetails product={product} />
         }
-        <div className="product-controls">
-          <input type="number" name="productNumber" id="productNumber" min="0" step="1" />
-          <button>Add to Cart</button>
-        </div>
+        <form className="product-controls" onSubmit={handleSubmit}>
+          <input 
+            type="number" 
+            name="productNumber" 
+            id="productNumber" 
+            min="0" 
+            step="1"
+            max={product?.data?.stock || 0}
+            disabled={!(product?.data?.stock)}
+            onChange={e => setNumberProduct(e.target.value)}
+          />
+          <button disabled={!(product?.data?.stock)}>Add to Cart</button>
+        </form>
         <div className="product-specs">
           <ul>
           {
@@ -83,6 +110,6 @@ export default function Details() {
           </ul>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

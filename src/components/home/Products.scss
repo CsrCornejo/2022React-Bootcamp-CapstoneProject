@@ -5,7 +5,7 @@
     align-items: flex-start;
 
     &-title {
-        color: blue;
+        color: #0EB8BE;
     }
 
     &-container {
@@ -43,6 +43,7 @@
         height: 30px;
         margin: 5px 0;
         border-radius: 5px;
+        cursor: pointer;
       }
 
       &-details {
