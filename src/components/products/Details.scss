@@ -1,10 +1,12 @@
 .Details {
+  overflow-x: auto;
   height: calc(100% - 120px);
   max-width: 100%;
   text-align: left;
   color: white;
   display: flex;
   flex-direction: column;
+  padding: 20px;
 
   .swiper-container {
     height: 30%;
